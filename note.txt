@@ -1,0 +1,5 @@
+npx expo start -c
+
+npx expo run:ios
+npx expo run:android
+

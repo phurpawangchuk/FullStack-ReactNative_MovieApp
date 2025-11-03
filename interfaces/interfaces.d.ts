@@ -15,6 +15,16 @@ interface Movie {
   vote_count: number;
 }
 
+interface Address {
+  id: number;
+  title: string;
+  city?: string;
+  street?: string;
+  zipCode?: string;
+  country?: string;
+  phone?: string;
+  email?: string;
+}
 interface TrendingMovie {
   searchTerm: string;
   movie_id: number;
@@ -74,4 +84,27 @@ interface MovieDetails {
 interface TrendingCardProps {
   movie: TrendingMovie;
   index: number;
+}
+
+
+interface TableColumn {
+  key: string;
+  title: string;
+  width?: string; // Tailwind width class like 'w-20', 'w-32', etc.
+  align?: "left" | "center" | "right";
+  numberOfLines?: number;
+}
+
+interface TableProps {
+  title?: string;
+  columns: TableColumn[];
+  data: any[];
+  maxHeight?: string; // Tailwind max-height class like 'max-h-80', 'max-h-96', etc.
+  containerClassName?: string;
+  headerClassName?: string;
+  rowClassName?: string;
+  textClassName?: string;
+  alternateRowColors?: boolean;
+  showScrollIndicator?: boolean;
+  emptyMessage?: string;
 }

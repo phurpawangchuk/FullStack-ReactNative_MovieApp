@@ -1,28 +1,55 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image, TextInput} from 'react-native';
-import {icons} from "@/constants/icons";
+import React, { useState } from "react";
+import { View, TextInput, StyleSheet } from "react-native";
 
 interface Props {
-    placeholder : string;
-    onPress?: () => void;
-    value? : string;
-    onChangeText? : (text : string) => void;
+  placeholder: string;
+  onPress?: () => void;
+  value?: string;
+  onChangeText?: (text: string) => void;
 }
 
-  const SearchBar = ({placeholder,onPress,value,onChangeText} : Props) => {
-    return (
-        <View className="flex-row items-center bg-[#0F0D23] rounded-full px-5 py-4">
-            <Image source={icons.search} className="size-5" resizeMode="contain" tintColor="#AB8BFF"/>
-            <TextInput
-                onPress={onPress}
-                placeholder={placeholder}
-                value={value}
-                onChangeText={onChangeText}
-                placeholderTextColor="#A8B5DB"
-                className="flex-1 ml-2 text-white"
-                />
-        </View>
-    );
+const SearchBar = ({ placeholder, onPress, value, onChangeText }: Props) => {
+  // internal fallback value so input remains editable even if parent doesn't control value
+  const [internalValue, setInternalValue] = useState("");
+
+  const displayValue = value !== undefined ? value : internalValue;
+
+  const handleChange = (text: string) => {
+    if (onChangeText) {
+      onChangeText(text);
+    } else {
+      setInternalValue(text);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        value={displayValue}
+        onChangeText={handleChange}
+        onFocus={onPress}
+        placeholder={placeholder || "Search"}
+        placeholderTextColor="gray"
+        editable={true}
+      />
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginVertical: 10,
+  },
+  input: {
+    height: 40,
+    color: "black",
+    fontSize: 16,
+  },
+});
 
 export default SearchBar;
