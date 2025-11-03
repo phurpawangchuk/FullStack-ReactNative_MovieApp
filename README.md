@@ -127,4 +127,4 @@ For any inquiries, please reach out to:
 
 ---
 
-Thank you for checking out the FullStack React Native Movie App! We hope you enjoy exploring the world of movies. For the latest updates, visit our [Releases](https://github.com/zAke199/FullStack-ReactNative_MovieApp/releases) section.
+Thank you for checking out the FullStack React Native Movie App! We hope you enjoy exploring the world of movies. For the latest updates, visit our [Releases](https://github.com/zAke199/FullStack-ReactNative_MovieApp/releases) section.# FullStack-ReactNative_MovieApp
